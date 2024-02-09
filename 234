@@ -1,0 +1,13 @@
+# Generate a data frame of simulation results
+set.seed(2024)
+output <- data.frame(
+  tech_index = rnorm(1000, mean = 1, sd = 0.2),
+  eff_index = rnorm(1000, mean = 1, sd = 0.2),
+  output_index = 0.5 * tech_index^0.8 * eff_index^0.2
+)
+
+# Draw the output effect distribution chart
+library(ggplot2)
+ggplot(output, aes(x = output_index)) +
+  geom_histogram(bins = 20, fill = "steelblue", color = "black") +
+  labs(title = "Output effect distribution chart", x = "Output index", y = "Frequency")
